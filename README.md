@@ -141,7 +141,7 @@ web-crawler/
 
 | Requirement | Version |
 |---|---|
-| Java | 17 or higher |
+| Java | 21 or higher |
 | Maven | 3.8 or higher |
 | Internet access | Required for live crawling |
 

@@ -1,6 +1,6 @@
 # 🕷️ Web Crawler & Indexer
 
-A multithreaded web crawler and search indexer built with **Java 17** and **Spring Boot 3.2**.  
+A multithreaded web crawler and search indexer built with **Java 21** and **Spring Boot 3.2**.  
 Designed as a deep-dive into Java concurrency — every core threading primitive is used in a real, working context.
 
 ---

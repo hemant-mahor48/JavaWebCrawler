@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Java Web Crawler Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Multithreaded Java crawler</p>
+        <h1>Control the crawl. Watch the index wake up.</h1>
+        <p class="hero-subtitle">Launch concurrent crawls, inspect extracted pages, search the inverted index, and keep an eye on crawler throughput from one focused console.</p>
+      </div>
+      <div class="signal-board" aria-label="crawler activity preview">
+        <span class="node node-a"></span>
+        <span class="node node-b"></span>
+        <span class="node node-c"></span>
+        <span class="node node-d"></span>
+        <span class="trace trace-one"></span>
+        <span class="trace trace-two"></span>
+        <span class="trace trace-three"></span>
+        <div class="thread-chip">crawler-thread-5</div>
+        <div class="thread-chip chip-alt">index.merge()</div>
+      </div>
+    </section>
+
+    <section class="metrics-grid" aria-label="crawler metrics">
+      <article class="metric">
+        <span class="metric-label">Pages indexed</span>
+        <strong id="pagesIndexed">0</strong>
+      </article>
+      <article class="metric">
+        <span class="metric-label">Keywords tracked</span>
+        <strong id="keywordsIndexed">0</strong>
+      </article>
+      <article class="metric">
+        <span class="metric-label">Last crawl</span>
+        <strong id="lastCrawlCount">0</strong>
+      </article>
+      <article class="metric">
+        <span class="metric-label">Status</span>
+        <strong id="crawlStatus">Idle</strong>
+      </article>
+    </section>
+
+    <section class="workspace-grid">
+      <form class="control-panel" id="crawlForm">
+        <div class="section-heading">
+          <p class="eyebrow">Launch</p>
+          <h2>Crawl settings</h2>
+        </div>
+
+        <label class="field">
+          <span>Seed URLs</span>
+          <textarea id="seedUrls" rows="5" spellcheck="false">https://example.com
+https://spring.io</textarea>
+        </label>
+
+        <div class="compact-fields">
+          <label class="field">
+            <span>Max pages</span>
+            <input id="maxPages" type="number" min="1" max="50" value="8">
+          </label>
+          <label class="field">
+            <span>Max depth</span>
+            <input id="maxDepth" type="number" min="1" max="5" value="2">
+          </label>
+        </div>
+
+        <button class="primary-action" type="submit">
+          <span class="play-icon" aria-hidden="true"></span>
+          Start crawl
+        </button>
+      </form>
+
+      <section class="results-panel">
+        <div class="section-heading inline-heading">
+          <div>
+            <p class="eyebrow">Results</p>
+            <h2>Latest pages</h2>
+          </div>
+          <button class="ghost-action" id="refreshStats" type="button">Refresh</button>
+        </div>
+        <div class="results-list" id="resultsList">
+          <div class="empty-state">
+            <strong>No crawl yet</strong>
+            <span>Latest page titles, links, keywords, and failures appear here.</span>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="search-index-grid">
+      <section class="search-panel">
+        <div class="section-heading">
+          <p class="eyebrow">Search</p>
+          <h2>Query the index</h2>
+        </div>
+        <form class="search-row" id="searchForm">
+          <input id="searchQuery" type="search" placeholder="Try java, spring, thread..." autocomplete="off">
+          <button class="secondary-action" type="submit">Search</button>
+        </form>
+        <div class="match-list" id="searchResults">
+          <span class="soft-text">Search results appear here after the index has data.</span>
+        </div>
+      </section>
+
+      <section class="index-panel">
+        <div class="section-heading inline-heading">
+          <div>
+            <p class="eyebrow">Index</p>
+            <h2>Keyword map</h2>
+          </div>
+          <button class="ghost-action" id="loadIndex" type="button">Load index</button>
+        </div>
+        <div class="keyword-cloud" id="keywordCloud">
+          <span class="soft-text">Top keywords appear here.</span>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -450,3 +450,10 @@ Check that crawl results have `"status": "SUCCESS"`. Failed pages are not indexe
 ## License
 
 MIT License — free to use, modify, and distribute.
+# Dashboard
+
+The project now includes a built-in UI dashboard served by Spring Boot at `http://localhost:8080`.
+
+Deployment note: no hosted platform can honestly guarantee "free forever". For this Java backend, the closest practical lifetime-free option is Oracle Cloud Always Free; easier demo hosts such as Render, Koyeb, and Northflank have free-plan limits, sleeping, or capacity rules.
+
+---
